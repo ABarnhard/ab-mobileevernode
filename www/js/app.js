@@ -11,12 +11,13 @@
         StatusBar.styleDefault();
       }
     });
-
+    /*
     $http.get('http://localhost:3000/status').then(function(response){
       $rootScope.rootuser = response.data;
     }, function(){
       $rootScope.rootuser = null;
     });
+    */
   })
   .config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
