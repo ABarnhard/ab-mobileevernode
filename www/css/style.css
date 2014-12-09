@@ -1,1 +1,7 @@
 /* Empty. Add your own CSS if you like */
+.log-out-button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+}

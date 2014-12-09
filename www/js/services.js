@@ -26,6 +26,50 @@
         return friends[friendId];
       }
     };
-  });
+  })
+
+  .factory('User', function($http, httpOrigin){
+    function login(user){
+      return $http.post(httpOrigin + '/login', user);
+    }
+
+    function logout(){
+      return $http.delete(httpOrigin + '/logout');
+    }
+
+    return {login:login, logout:logout};
+  })
+
+  .factory('Note', ['$http', '$upload', 'httpOrigin', function($http, $upload, httpOrigin){
+    function create(note, files){
+      var noteData = {
+          url: httpOrigin + '/notes',
+          method: 'POST',
+          data: note,
+          file: files,
+          fileFormDataName: 'photos'
+      };
+
+      return $upload.upload(noteData);
+    }
+
+    function query(limit, offset, filter){
+      limit  = limit  || 10;
+      offset = offset || 0;
+      filter = filter || '%';
+      console.log(httpOrigin);
+      return $http.get(httpOrigin + '/notes?limit=' + limit + '&offset=' + offset + '&filter=' + filter);
+    }
+
+    function findOne(noteId){
+      return $http.get(httpOrigin + '/notes/' + noteId);
+    }
+
+    function nuke(noteId){
+      return $http.delete(httpOrigin + 'notes/' + noteId);
+    }
+
+    return {create:create, query:query, findOne:findOne, nuke:nuke};
+  }]);
 })();
 

@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <ion-view title="Account">
-      <ion-content class="padding">
-        <h1>Account</h1>
-      </ion-content>
-    </ion-view>
-  </body>
-</html>
+
+<ion-view title="Account">
+  <ion-content class="padding">
+    <h1>Login</h1>
+    <div class="list">
+      <label class="item item-input item-floating-label"><span class="input-label">User Name</span>
+        <input type="text" ng-model="user.username" placeholder="User Name">
+      </label>
+      <label class="item item-input item-floating-label"><span class="input-label">Password</span>
+        <input type="password" ng-model="user.password" placeholder="Password">
+      </label>
+    </div>
+    <button type="button" ng-click="login(user)" class="button button-block button-positive">Log In</button>
+  </ion-content>
+</ion-view>

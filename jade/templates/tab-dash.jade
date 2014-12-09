@@ -2,4 +2,7 @@ html
   body
     ion-view(title='Dashboard')
       ion-content.padding
-        h1 Dash
+        h1 {{rootuser.username}}
+        img.avatar(ng-src='{{rootuser.avatar}}')
+
+

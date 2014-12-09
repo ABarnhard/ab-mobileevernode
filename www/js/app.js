@@ -1,7 +1,7 @@
 (function(){
   'use strict';
-  angular.module('evernode', ['ionic', 'evernode.controllers', 'evernode.services'])
-  .run(function($ionicPlatform){
+  angular.module('evernode', ['ionic', 'angularFileUpload', 'evernode.controllers', 'evernode.services'])
+  .run(function($rootScope, $ionicPlatform, $http){
     $ionicPlatform.ready(function(){
 
       if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -11,8 +11,14 @@
         StatusBar.styleDefault();
       }
     });
+
+    $http.get('http://localhost:3000/status').then(function(response){
+      $rootScope.rootuser = response.data;
+    }, function(){
+      $rootScope.rootuser = null;
+    });
   })
-  .config(function($stateProvider, $urlRouterProvider){
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -70,6 +76,9 @@
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/dash');
+
+    // set http to use cookies
+    $httpProvider.defaults.withCredentials = true;
   });
 
 })();
