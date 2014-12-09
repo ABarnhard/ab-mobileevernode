@@ -2,11 +2,11 @@
 <widget id="com.ionicframework.abmobileevernode267921" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>ab-mobileevernode</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+    A Mobile companion app for Evernode
+  </description>
+  <author email="admbarn@gmail.com" href="http://adambarnhard.com/">
+    Ionic Framework Team
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
