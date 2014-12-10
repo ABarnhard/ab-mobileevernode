@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <ion-view title="Dashboard">
-      <ion-content class="padding">
-        <h1>{{rootuser.username}}</h1><img ng-src="{{rootuser.avatar}}" class="avatar">
-      </ion-content>
-    </ion-view>
-  </body>
-</html>
+
+<ion-view title="Dashboard">
+  <ion-content class="padding">
+    <div class="card">
+      <div class="item item-divider">{{rootuser.username}}</div>
+      <div class="item item-image"><img ng-src="{{rootuser.avatar}}" class="avatar"></div>
+    </div>
+  </ion-content>
+</ion-view>

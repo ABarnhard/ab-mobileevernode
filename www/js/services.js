@@ -3,9 +3,6 @@
 
   angular.module('evernode.services', [])
 
-  /**
-   * A simple example service that returns some data.
-   */
   .factory('Friends', function(){
     // Might use a resource here that returns a JSON array
 
@@ -28,22 +25,22 @@
     };
   })
 
-  .factory('User', function($http, httpOrigin){
+  .factory('User', function($http, origin){
     function login(user){
-      return $http.post(httpOrigin + '/login', user);
+      return $http.post(origin + '/login', user);
     }
 
     function logout(){
-      return $http.delete(httpOrigin + '/logout');
+      return $http.delete(origin + '/logout');
     }
 
     return {login:login, logout:logout};
   })
 
-  .factory('Note', ['$http', '$upload', 'httpOrigin', function($http, $upload, httpOrigin){
+  .factory('Note', ['$http', '$upload', 'origin', function($http, $upload, origin){
     function create(note, files){
       var noteData = {
-          url: httpOrigin + '/notes',
+          url: origin + '/notes',
           method: 'POST',
           data: note,
           file: files,
@@ -57,16 +54,17 @@
       limit  = limit  || 10;
       offset = offset || 0;
       filter = filter || '%';
-      console.log(httpOrigin);
-      return $http.get(httpOrigin + '/notes?limit=' + limit + '&offset=' + offset + '&filter=' + filter);
+      // console.log(origin);
+      return $http.get(origin + '/notes?limit=' + limit + '&offset=' + offset + '&filter=' + filter);
     }
 
     function findOne(noteId){
-      return $http.get(httpOrigin + '/notes/' + noteId);
+      // console.log(noteId);
+      return $http.get(origin + '/notes/' + noteId);
     }
 
     function nuke(noteId){
-      return $http.delete(httpOrigin + 'notes/' + noteId);
+      return $http.delete(origin + 'notes/' + noteId);
     }
 
     return {create:create, query:query, findOne:findOne, nuke:nuke};

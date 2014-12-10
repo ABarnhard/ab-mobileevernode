@@ -2,6 +2,6 @@
     'use strict';
 
     angular.module('evernode')
-    .value('httpOrigin', 'http://localhost:3000');
+    .value('origin', 'http://localhost:3000');
 
 })();

@@ -1,0 +1,17 @@
+
+<ion-view title="{{note.title}}">
+  <ion-content has-header="true" padding="true">
+    <ion-list>
+      <div class="item item-divider">Body</div>
+      <div class="item">{{note.body}}</div>
+      <div class="item item-divider">Tags</div>
+      <div class="item">
+        <div ng-repeat="tag in note.tagNames" class="tag"><a href="#/tab/notes?filter={{tag}}">{{tag}}</a></div>
+      </div>
+      <div class="item item-divider">Photos</div>
+      <div ng-repeat="url in note.photos" class="item item-image"><img ng-src="{{url}}">
+        <p>&nbsp;</p>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

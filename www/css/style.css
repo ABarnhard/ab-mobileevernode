@@ -5,3 +5,8 @@
     right: 5px;
     bottom: 5px;
 }
+
+.tag{
+    display: inline-block;
+    margin-right: 1em;
+}

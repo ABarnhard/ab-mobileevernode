@@ -1,0 +1,7 @@
+ion-view(title='Notes')
+  ion-content
+    ion-list
+      ion-item(ng-repeat='note in notes', type='item-text-wrap', href='#/tab/notes/{{note.noteId}}')
+        | {{note.title}}
+    .button-bar.bar-stable
+      a(ng-repeat='page in pages', ui-sref='tab.notes({page:page})').button Page {{page}}

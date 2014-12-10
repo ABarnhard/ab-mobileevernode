@@ -11,13 +11,13 @@
         StatusBar.styleDefault();
       }
     });
-    /*
+
     $http.get('http://localhost:3000/status').then(function(response){
       $rootScope.rootuser = response.data;
     }, function(){
       $rootScope.rootuser = null;
     });
-    */
+
   })
   .config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
@@ -46,21 +46,22 @@
         }
       })
 
-      .state('tab.friends', {
-        url: '/friends',
+      .state('tab.notes', {
+        url: '/notes?page&filter',
         views: {
-          'tab-friends': {
-            templateUrl: 'templates/tab-friends.html',
-            controller: 'FriendsCtrl'
+          'tab-notes': {
+            templateUrl: 'templates/tab-notes.html',
+            controller: 'NotesCtrl'
           }
         }
       })
-      .state('tab.friend-detail', {
-        url: '/friend/:friendId',
+
+      .state('tab.note-detail', {
+        url: '/notes/:noteId',
         views: {
-          'tab-friends': {
-            templateUrl: 'templates/friend-detail.html',
-            controller: 'FriendDetailCtrl'
+          'tab-notes': {
+            templateUrl: 'templates/note-detail.html',
+            controller: 'NoteDetailCtrl'
           }
         }
       })

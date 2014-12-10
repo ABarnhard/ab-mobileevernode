@@ -5,14 +5,37 @@
     .controller('DashCtrl', function($scope, Note){
 
     })
+
     .controller('NavCtrl', function($rootScope, $scope, $state, User){
         $scope.logout = function(){
             User.logout().then(function(){
                 $rootScope.rootuser = null;
-                $state.go('tab.dash');
+                $state.go('tab.account');
             });
         };
     })
+
+    .controller('NotesCtrl', function($scope, $stateParams, Note){
+        $scope.pages = [];
+        var page   = $stateParams.page || 1,
+            offset = (page - 1) * 10;
+
+        Note.query(10, offset, $stateParams.filter).then(function(res){
+            //console.log(res.data);
+            $scope.pages = [];
+            $scope.notes = res.data;
+            if($scope.notes.length){
+                var noteCount = $scope.notes[0].noteCount,
+                    pageCount = Math.ceil(noteCount/10);
+                for(var i = 1; i <= pageCount; i++){
+                    $scope.pages.push(i);
+                }
+            }
+        },function(){
+            console.log('ERROR IN NOTES');
+        });
+    })
+
     .controller('FriendsCtrl', function($scope, Note){
         Note.query().then(function(res){
             //console.log(res.data);
@@ -22,8 +45,11 @@
         });
     })
 
-    .controller('FriendDetailCtrl', function($scope, $stateParams, Friends){
-      $scope.friend = Friends.get($stateParams.friendId);
+    .controller('NoteDetailCtrl', function($scope, $stateParams, Note){
+      Note.findOne($stateParams.noteId).then(function(res){
+        $scope.note = res.data[0];
+        console.log($scope.note);
+      });
     })
 
     .controller('AccountCtrl', function($rootScope, $scope, $state, User){
