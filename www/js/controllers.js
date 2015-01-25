@@ -37,7 +37,7 @@
 
         function success(b64){
             //console.log(b64);
-            Note.upload(noteId, b64).then(function(response){
+            Note.upload($stateParams.noteId, b64).then(function(response){
               console.log('image uploaded successfully');
             }, function(response){
               console.log('something went wrong when uploading');
